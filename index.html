@@ -17,7 +17,6 @@
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#focus">Focus</a>
-          <a href="#deploy">Deploy</a>
         </div>
       </nav>
     </header>
@@ -25,15 +24,15 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <p class="eyebrow">Software engineering portfolio</p>
-        <h1 id="hero-title">Full-stack products, distributed systems, and reliability-focused infrastructure.</h1>
+        <h1 id="hero-title">Product-minded software engineering with systems depth.</h1>
         <p class="intro">
-          I build compact, working systems that show end-to-end engineering judgment:
-          product interfaces, APIs, durable storage, observability, deployment workflows,
-          and tested failure behavior.
+          Selected projects across full-stack products, distributed systems,
+          infrastructure, observability, and low-level reliability work.
         </p>
         <div class="hero-actions" aria-label="Profile links">
           <a class="button primary" href="https://github.com/AdamHameed">GitHub</a>
           <a class="button" href="https://typ-nique-web-production.up.railway.app/">Live Typ-Nique</a>
+          <a class="button" href="https://protective-benevolence-production-77b8.up.railway.app/">Live Voice Analyzer</a>
         </div>
       </section>
 
@@ -49,14 +48,13 @@
               <p class="project-type">Full-stack product · Real-time systems</p>
               <h3>Typ-Nique</h3>
               <p>
-                A real-time multiplayer Typst typing platform with rooms, server-authoritative
-                scoring, persistence, and deployable web, API, and worker services.
+                Real-time multiplayer Typst typing platform with rooms, scoring,
+                persistence, and deployable web/API/worker services.
               </p>
             </div>
             <ul class="proof-list">
               <li>Next.js, TypeScript, WebSockets, Redis, PostgreSQL, Prisma</li>
-              <li>Dockerized monorepo with shared packages and production deployment docs</li>
-              <li>Railway deployment backed by immutable container images</li>
+              <li>Dockerized monorepo, shared packages, Railway deployment</li>
             </ul>
             <div class="project-links">
               <a href="https://typ-nique-web-production.up.railway.app/">Live site</a>
@@ -69,14 +67,13 @@
               <p class="project-type">Distributed systems · Storage</p>
               <h3>Distributed Key-Value Store</h3>
               <p>
-                A 3-node Go key-value database using Raft consensus, gRPC APIs,
-                persistent storage, snapshots, and a CLI-driven failover demo.
+                3-node Go key-value database with Raft consensus, gRPC APIs,
+                snapshots, and failover recovery.
               </p>
             </div>
             <ul class="proof-list">
-              <li>Leader election, quorum writes, redirect-aware client behavior</li>
-              <li>BadgerDB state, Bolt-backed Raft logs, snapshots, Docker Compose</li>
-              <li>Demo proves writes survive leader failover and node restart</li>
+              <li>Leader election, quorum writes, redirect-aware CLI</li>
+              <li>BadgerDB state, Bolt-backed Raft logs, Docker Compose</li>
             </ul>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/d-key-value-store">Code</a>
@@ -89,8 +86,8 @@
             <p class="project-type">Database internals</p>
             <h3>Mini SQL Storage Engine</h3>
             <p>
-              Go storage engine with append-only records, a persisted B+ tree index,
-              MVCC-style snapshots, concurrent readers/writers, WAL, and startup recovery.
+              Go storage engine with B+ tree indexes, MVCC-style snapshots,
+              WAL, and startup recovery.
             </p>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/mini-sql-storage-engine">Code</a>
@@ -101,9 +98,8 @@
             <p class="project-type">C++ systems · Reliability</p>
             <h3>Embedded Flight Recorder</h3>
             <p>
-              C++17 flight data recorder simulation with producer/consumer threading,
-              packed binary telemetry records, CRC validation, journaling, replay,
-              recovery tooling, and fault injection.
+              C++17 recorder simulation with binary telemetry logs, CRC checks,
+              journaling, replay, and recovery tools.
             </p>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/embedded-flight-recorder">Code</a>
@@ -114,9 +110,8 @@
             <p class="project-type">Platform engineering</p>
             <h3>ServiceOps Platform</h3>
             <p>
-              Rails and React internal developer platform for service ownership,
-              health checks, deployment history, rollback visibility, audit logs,
-              Sidekiq jobs, and Prometheus-compatible metrics.
+              Rails and React service registry with health checks, rollbacks,
+              audit logs, Sidekiq, and Prometheus metrics.
             </p>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/ServiceOps-Platform">Code</a>
@@ -127,9 +122,8 @@
             <p class="project-type">Kubernetes · SRE</p>
             <h3>Kubernetes Deployment Controller</h3>
             <p>
-              Go controller with a custom ProgressiveDeployment CRD, managed
-              Deployment reconciliation, health tracking, rollback behavior, and
-              Prometheus rollout metrics.
+              Go controller for ProgressiveDeployment CRDs, rollout health,
+              automated rollback, and metrics.
             </p>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/kubernetes-deployment-controller">Code</a>
@@ -140,9 +134,8 @@
             <p class="project-type">AI tooling · Observability</p>
             <h3>AI Log Analyzer</h3>
             <p>
-              Full-stack incident triage app for uploading logs, parsing repeated
-              failures and stack traces, enriching findings with the OpenAI Responses
-              API, storing analyses, and exposing metrics.
+              Incident triage app for parsing logs, grouping failures, storing
+              analyses, and surfacing AI-assisted findings.
             </p>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/AI-log-summarizer">Code</a>
@@ -153,12 +146,24 @@
             <p class="project-type">Product app · APIs</p>
             <h3>Virtual Closet</h3>
             <p>
-              Next.js and FastAPI wardrobe app with JWT auth, searchable clothing
-              records, persistent image uploads, outfit planning, Alembic migrations,
-              and Railway-ready containers.
+              Next.js and FastAPI wardrobe app with auth, image uploads,
+              search, outfit planning, and migrations.
             </p>
             <div class="project-links">
               <a href="https://github.com/AdamHameed/virtual-closet">Code</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <p class="project-type">Audio · C++ · Go</p>
+            <h3>How Deep Is Your Voice</h3>
+            <p>
+              Deployed voice analyzer with browser recording, audio upload,
+              pitch estimation, and a simple voice-depth score.
+            </p>
+            <div class="project-links">
+              <a href="https://protective-benevolence-production-77b8.up.railway.app/">Live site</a>
+              <a href="https://github.com/AdamHameed/how-deep-is-your-voice">Code</a>
             </div>
           </article>
         </div>
@@ -170,25 +175,11 @@
           <h2 id="focus-title">What this portfolio emphasizes</h2>
         </div>
         <div class="focus-list">
-          <p>Backends with real state: PostgreSQL, Redis, BadgerDB, WALs, snapshots, and migrations.</p>
-          <p>Failure behavior: leader failover, crash recovery, rollbacks, retries, and audit trails.</p>
-          <p>Deployable systems: Dockerized services, health checks, metrics, and production notes.</p>
-          <p>Product judgment: minimal interfaces, clear workflows, and projects that can be demoed.</p>
+          <p>Stateful backends: PostgreSQL, Redis, BadgerDB, WALs, snapshots, migrations.</p>
+          <p>Reliability: failover, crash recovery, rollback logic, retries, audit trails.</p>
+          <p>Deployability: Docker, health checks, metrics, Railway, GitHub Pages.</p>
+          <p>Product judgment: small interfaces, clear workflows, demoable systems.</p>
         </div>
-      </section>
-
-      <section class="section deploy" id="deploy" aria-labelledby="deploy-title">
-        <div>
-          <p class="eyebrow">Deployment recommendation</p>
-          <h2 id="deploy-title">Use GitHub Pages for this portfolio.</h2>
-        </div>
-        <p>
-          This site is static HTML and CSS, so GitHub Pages is the better fit:
-          it is free, simple, reliable, and gives the portfolio a clean public URL.
-          Railway is excellent for apps with servers, databases, background workers,
-          environment variables, or persistent volumes. For this portfolio page,
-          Railway would add cost and operational surface without adding much value.
-        </p>
       </section>
     </main>
 

@@ -13,8 +13,9 @@ distributed systems, infrastructure, and reliability-focused engineering work.
 - Kubernetes Deployment Controller
 - AI Log Analyzer
 - Virtual Closet
+- How Deep Is Your Voice
 
-## Deployment Recommendation
+## Deployment
 
 Deploy this on GitHub Pages.
 
@@ -24,17 +25,31 @@ Railway is a better fit for the actual application projects in this workspace, e
 
 ## GitHub Pages Setup
 
-Option 1: Make `portfolio-website` its own repository.
+Recommended: push this folder as its own repository.
 
 1. Create a new GitHub repo, for example `AdamHameed.github.io` or `portfolio`.
-2. Push the contents of this folder as the repo root.
+2. Add the remote and push:
+
+```bash
+git remote add origin git@github.com:AdamHameed/<repo-name>.git
+git push -u origin main
+```
+
 3. In GitHub, open `Settings -> Pages`.
-4. Set the source to the default branch and root directory.
+4. Set `Source` to `Deploy from a branch`.
+5. Select `main` and `/root`, then save.
 
-Option 2: Keep it inside an existing repo.
+If the repo is named `AdamHameed.github.io`, the site will publish at:
 
-1. Move these files to a `/docs` directory in that repo, or configure a Pages workflow.
-2. In `Settings -> Pages`, set the source to the default branch and `/docs`.
+```text
+https://AdamHameed.github.io
+```
+
+Otherwise it will publish at:
+
+```text
+https://AdamHameed.github.io/<repo-name>/
+```
 
 ## Local Preview
 
