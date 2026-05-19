@@ -165,6 +165,80 @@ const terminal = {
   theme: "dark",
 };
 
+const suspiciousCommandResponses = [
+  {
+    pattern:
+      /:\s*\(\s*\)\s*\{\s*:\s*\|\s*:\s*&?\s*\}\s*;?\s*:|\bwhile\s+(true|:)\b.*\b(do|done)\b|\byes\b.*\|/,
+    response:
+      "Fork bomb detected. Simulated process table gently declined the invitation.\nImpact: 0 processes spawned, 0 machines harmed, 1 eyebrow raised.",
+  },
+  {
+    pattern: /\b(python|python3|node|ruby|perl|php)\b\s*(-c|-e|--eval)\b|\bimport\s+os\b|\bsubprocess\b|\bos\.system\b|\bexec\s*\(|\beval\s*\(/,
+    response:
+      "DO NOT REDEEM DO NOT REDEEEM",
+  },
+  {
+    pattern: /[`$]\(|;\s*(cat|ls|sh|bash|zsh|python|node|rm|curl|wget)\b|&&\s*(cat|ls|sh|bash|zsh|python|node|rm|curl|wget)\b|\|\s*(sh|bash|zsh|python|node)\b/,
+    response:
+      "Command injection audition received.\nUnfortunately, this terminal only injects tasteful project summaries into the DOM.",
+  },
+  {
+    pattern: /('|")\s*(or|and)\s+('|")?\d+\s*=\s*\d+|union\s+select|drop\s+table|insert\s+into|delete\s+from|--\s*$/,
+    response:
+      "SQL injection attempt declined.\nThe only database exposed here is my fondness for B+ trees.",
+  },
+  {
+    pattern: /<script\b|javascript:|onerror\s*=|onload\s*=|document\.cookie|localstorage/i,
+    response:
+      "XSS-looking input detected.\nNice try, but the terminal output uses text nodes. The script tags are staying decorative.",
+  },
+  {
+    pattern: /\b(sh|bash|zsh|fish)\b\s*(-i|--interactive)?\b|\b\/bin\/(sh|bash|zsh)\b/,
+    response:
+      "Shell spawning request denied.\nThis is a portfolio terminal, not a portal to a tiny unattended server.",
+  },
+  {
+    pattern: /\brm\s+(-[^\s]*r[^\s]*f|-+[^\s]*f[^\s]*r)\b|\/\*/,
+    response:
+      "Destructive delete request received.\nThis portfolio runs in pretend-shell mode, so the filesystem has responded with: no thanks.",
+  },
+  {
+    pattern: /\bsudo\b|\bsu\s+-?\b/,
+    response:
+      "Permission denied: this terminal does not grant root.\nTry `projects` instead. Much safer, roughly as powerful.",
+  },
+  {
+    pattern: /\b(curl|wget)\b.*\|\s*(sh|bash|zsh)\b/,
+    response:
+      "Piping internet mystery soup into a shell? Bold.\nExecution blocked by the portfolio's tiny sense of self-preservation.",
+  },
+  {
+    pattern: /\b(chmod|chown)\b.*\b777\b|\bchmod\s+-R\b/,
+    response:
+      "Permission chaos rejected.\nThe vibes are read-only, the buttons are decorative, and the access control list is mostly confidence.",
+  },
+  {
+    pattern: /\b(dd|mkfs|fdisk|diskutil)\b/,
+    response:
+      "Disk-level command intercepted.\nNo disks exist here, only pixels with ambition.",
+  },
+  {
+    pattern: /\b(nc|netcat|nmap|ssh|scp)\b/,
+    response:
+      "Network mischief mode is unavailable.\nThis terminal can connect you to `links`, `contact`, and a modest amount of professional credibility.",
+  },
+  {
+    pattern: /\b(iptables|pfctl|launchctl|systemctl|service|killall|pkill|kill\s+-9)\b/,
+    response:
+      "Process-control energy detected.\nAll imaginary daemons have formed a union and refused the request.",
+  },
+  {
+    pattern: /\b(crypto|miner|xmrig|botnet|malware|payload|exploit)\b/,
+    response:
+      "Security incident cosplay noted.\nThe only payload here is a concise project list.",
+  },
+];
+
 const screen = document.querySelector("[data-terminal-screen]");
 const form = document.querySelector("[data-terminal-form]");
 const input = document.querySelector("[data-terminal-input]");
@@ -236,6 +310,12 @@ function formatProject(project) {
   ].join("\n");
 }
 
+function getSuspiciousCommandResponse(command) {
+  const normalizedCommand = command.toLowerCase();
+  const match = suspiciousCommandResponses.find(({ pattern }) => pattern.test(normalizedCommand));
+  return match ? match.response : null;
+}
+
 function runCommand(rawCommand) {
   const command = rawCommand.trim().replace(/\s+/g, " ");
   if (!command) {
@@ -244,6 +324,12 @@ function runCommand(rawCommand) {
 
   terminal.history.push(command);
   terminal.historyIndex = terminal.history.length;
+
+  const suspiciousResponse = getSuspiciousCommandResponse(command);
+  if (suspiciousResponse) {
+    printEntry(command, suspiciousResponse);
+    return;
+  }
 
   if (command === "clear") {
     clearScreen();
